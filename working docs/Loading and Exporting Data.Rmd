@@ -1,0 +1,46 @@
+---
+title: "Loading and Exporting Data"
+author: "Joe Stone"
+date: "2022-11-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#load the packages needed
+library(tidyverse)
+library(StatsBombR)
+library(dplyr)
+library(ggplot2)
+library(openxlsx)
+library(readxl)
+```
+
+```{r}
+Comp <- FreeCompetitions()
+Women_Euro <- FreeCompetitions() %>% 
+  filter(competition_id==53 & season_id==106) #this loads the specific competition and season
+Matches <- FreeMatches(Women_Euro)
+StatsBombEvents <- StatsBombFreeEvents(MatchesDF = Matches, Parallel = T)
+```
+
+```{r}
+#Create a dataframe(df) with only corner data
+Corner <- StatsBombR::allclean(StatsBombEvents)
+Corner <-subset(Corner, play_pattern.name=="From Corner")
+```
+
+```{r}
+SaveName <- "Corner_Kick_Womens_Euro.xlsx"
+
+wb <- createWorkbook()
+
+addWorksheet(wb, "Corner")
+writeData(wb, sheet="Corner", Corner, colNames=T)
+
+saveWorkbook(wb, SaveName, overwrite = T)
+```
+

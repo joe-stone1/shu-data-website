@@ -1,0 +1,28 @@
+---
+title: "R Markdown"
+author: "Joe Stone"
+date: "2022-11-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+To ensure that the analysis and graphics you make are reproducible, you’ll do the majority of your work using R Markdown files.
+
+<div class="embed-responsive embed-responsive-16by9">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HqrRdRrmatk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+ADD MORE INFO
+
+Skim through the content at these pages:
+
+Using Markdown
+Using R Markdown
+How it Works
+Code Chunks
+Inline Code
+Markdown Basics (The R Markdown Reference Guide is super useful here.)
+Output Formats

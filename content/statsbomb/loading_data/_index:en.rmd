@@ -1,0 +1,21 @@
+---
+title: "Loading Free Data"
+author: "Joe Stone"
+date: "2022-11-11"
+output: html_document
+weight: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here the code accessing the free data sets. Using the code above, you can find the specific id's for competitions and seasons
+```{r load-statsbomb-data, eval=FALSE}
+#Loading Free Data
+Comp <- FreeCompetitions()
+Women_Euro <- FreeCompetitions() %>% 
+  filter(competition_id==53 & season_id==106) #this loads the specific competition and season
+Matches <- FreeMatches(Women_Euro)
+StatsBombEvents <- StatsBombFreeEvents(MatchesDF = Matches, Parallel = T)
+```

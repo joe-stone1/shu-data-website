@@ -1,0 +1,24 @@
+---
+title: "Loading Free Data"
+author: "Joe Stone"
+date: "2022-11-11"
+output: html_document
+weight: 2
+---
+
+
+
+<p>Here the code accessing the free data sets. Using the code from the previous page, you can find the specific id’s for competitions and seasons</p>
+<pre class="r"><code>#Loading Free Data
+Comp &lt;- FreeCompetitions()
+Women_Euro &lt;- FreeCompetitions() %&gt;% 
+  filter(competition_id==53 &amp; season_id==106) #this loads the specific competition and season
+Matches &lt;- FreeMatches(Women_Euro) #This shows the available matches within the competitions chosen
+StatsBombEvents &lt;- StatsBombFreeEvents(MatchesDF = Matches, Parallel = T) #This oulls all the event data for the matches that are chosen
+StatsBombData = allclean(StatsBombData) # Extracts lots of relevant information such as x/y coordinates. More information can be found in the package info. Be sure to familiarise yourself with the columns it creates using names(nameofyourdfhere)</code></pre>
+<p>Statsbomb have put the specification documents for StatsBomb Data. These are available to view or download and define key apsects to the data set.</p>
+<p>These documents include:</p>
+<p><a href="https://github.com/statsbomb/open-data/blob/master/doc/Open%20Data%20Competitions%20v2.0.0.pdf">Open Data Competitions.pdf- Covers the objects contained within the competitions</a> information</p>
+<p><a href="https://github.com/statsbomb/open-data/blob/master/doc/Open%20Data%20Matches%20v3.0.0.pdf">Open Data Matches v3.0.0.pdf - Describes the match info download</a></p>
+<p><a href="https://github.com/statsbomb/open-data/blob/master/doc/Open%20Data%20Lineups%20v2.0.0.pdf">Open Data Lineups v2.0.0.pdf - Describes the structure of the lineup info</a></p>
+<p><a href="https://github.com/statsbomb/open-data/blob/master/doc/Open%20Data%20Events%20v4.0.0.pdf">Open Data Events v4.0.0.pdf - Explains the meaning of the column names within the event data. StatsBomb Event Data Specification v1.1.pdf - The full breakdown of all the events within the data.</a></p>

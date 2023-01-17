@@ -1,0 +1,23 @@
+---
+title: "Why use R?"
+author: "Joe Stone"
+date: "27/10/2022"
+output: html_document
+weight: 1
+chapter: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9kYUGMg_14s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+There are a series of reasons to develop your skills in R:
+
+* Transferable skills 
+* Most widely used data analysis software
+* Reproducible science
+* One stop shop
+* RStudio is fun

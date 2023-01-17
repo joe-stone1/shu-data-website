@@ -1,0 +1,30 @@
+---
+title: "The basics of R"
+author: "Joe Stone"
+date: "2022-11-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here, there and some of  RStudio’s introductory primers. You can do these in your web browser, type code and see the results there.
+
+You’ll learn some of the basics of R, as well as some methods for manipulating data with the dplyr package.
+
+Complete these:
+
+## The Basics 
+* [Data Visualization Basics](https://posit.cloud/learn/primers/1.1)
+  
+* [Programming basics](https://posit.cloud/learn/primers/1.2)
+
+## Work with Data
+* [Working with Tibbles](https://posit.cloud/learn/primers/2.1)
+
+* [Isolating Data with dplyr](https://posit.cloud/learn/primers/2.2)
+
+* [Deriving Information with](dplyr https://posit.cloud/learn/primers/2.3)
+
+The content from these primers comes from the (free and online!) book R for Data Science by Garrett Grolemund and Hadley Wickham. This is a great book as a reference and for continuing to learn and use R in the future. 

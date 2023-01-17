@@ -1,0 +1,51 @@
+---
+title: "Accessing Statsbomb Data"
+author: "Joe Stone"
+date: "27/10/2022"
+output: html_document
+weight: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](/en/images/Statsbomb_Logo.jpeg?classes=shadow&width=50p)
+
+Statsbomb kindly provide a range of data sets at no cost. An overview of the available data can be found here: [Free Data](https://statsbomb.com/what-we-do/hub/free-data/). The code below can be ran in R to see which specific competitions and data sets you can access. 
+
+First the installation of the StatsBombR package is required
+
+However, if the package comes via Github we use the devtools package to install it. Devtools allows for downloading of packages directly from Github. 
+
+```{r, eval=FALSE}
+#To install the package in R, you will need to install the Devtools package, which can be done by running the following line of code:
+install.packages("devtools") 
+install.packages("remotes") 
+remotes::install_version("SDMTools", "1.1-221")
+```
+
+```{r, eval=FALSE}
+#Then to install StatsBombR run:
+devtools::install_github("statsbomb/StatsBombR")
+```
+
+```{r, eval=FALSE}
+#Load required packages
+library(tidyverse)
+library(StatsBombR)
+library(dplyr)
+```
+
+```{r comp, eval=FALSE}
+#Loads competitions which are available
+Comp <- FreeCompetitions() #this gives you the competitions ids used below
+view(Comp)
+```
+
+Table 1. Available Free Data
+![Table 1. Free Data](/en/images/Free_Comp.png)
+
+The next page demostrates how to load data using the competition data table 1. 
+
+

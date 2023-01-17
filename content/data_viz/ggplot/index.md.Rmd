@@ -1,0 +1,34 @@
+---
+title: "ggplot"
+author: "Joe Stone"
+date: "2022-11-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ggplot
+
+Data visualization with ggplot2
+
+Introductory primers for ggplot2. You’ll do these in your browser and type code and see results there.
+
+Visualize Data
+
+[Exploratory Data Analysis](https://posit.cloud/learn/primers/3.1)
+
+[Bar Charts](https://rstudio.cloud/learn/primers/3.2)
+
+[Histograms](https://rstudio.cloud/learn/primers/3.3)
+
+[Boxplots and Counts](https://rstudio.cloud/learn/primers/3.4)
+
+[Scatterplots](https://rstudio.cloud/learn/primers/3.5)
+
+[Line plots](https://rstudio.cloud/learn/primers/3.6)
+
+[Overplotting and Big Data](https://rstudio.cloud/learn/primers/3.7)
+
+[Customize Your Plots](https://rstudio.cloud/learn/primers/3.8)

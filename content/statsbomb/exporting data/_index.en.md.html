@@ -1,0 +1,51 @@
+---
+title: "Loading and Exporting Data"
+author: "Joe Stone"
+date: "2022-11-11"
+output: html_document
+---
+
+
+
+<p>In this example we will load data from Statsbomb, filter the data set to provide information only on corner kicks, then export the data to excel.</p>
+<p>You can find the full code for this example here:</p>
+<div id="load-packages" class="section level3">
+<h3>Load Packages</h3>
+<p>The first stage in the code is to load the packages required:</p>
+<pre class="r"><code>#load the packages needed
+library(tidyverse)
+library(StatsBombR)
+library(dplyr)
+library(ggplot2)
+library(openxlsx)
+library(readxl)</code></pre>
+</div>
+<div id="import-data" class="section level3">
+<h3>Import Data</h3>
+<p>The next stage is to load the free data from statsbomb. You can define which competition and season using the ID. For this example we are using the Womens Euros 2021 data.</p>
+<pre class="r"><code>Comp &lt;- FreeCompetitions()
+Women_Euro &lt;- FreeCompetitions() %&gt;% 
+  filter(competition_id==53 &amp; season_id==106) #this loads the specific competition and season
+Matches &lt;- FreeMatches(Women_Euro)
+StatsBombEvents &lt;- StatsBombFreeEvents(MatchesDF = Matches, Parallel = T)</code></pre>
+<p>This has now loaded the full data set for the Womens Euro’s competition. From here you can explore the range of data which is available. In this example, and to reduce the amount of data we are examining, next we will focus on corner kicks.</p>
+</div>
+<div id="pattern-of-play-corner-kicks" class="section level3">
+<h3>Pattern of Play: Corner Kicks</h3>
+<p>Here, we can use some code to create a dataframe with a subset of data using play_pattern.name. Here we are using corners, but this could be use for any play pattern statsbomb define.</p>
+<pre class="r"><code>#Create a dataframe(df) with only corner data
+Corner &lt;- StatsBombR::allclean(StatsBombEvents)
+Corner &lt;-subset(Corner, play_pattern.name==&quot;From Corner&quot;)</code></pre>
+</div>
+<div id="exporting-data-to-excel" class="section level3">
+<h3>Exporting Data to Excel</h3>
+<p>From this point we can organised and analysis the data using R. However, in this example, we will export the data set out of the R-Studio environment into Excel, which might be a more familiar software package.</p>
+<pre class="r"><code>SaveName &lt;- &quot;Corner_Kick_Womens_Euro.xlsx&quot;
+
+wb &lt;- createWorkbook()
+
+addWorksheet(wb, &quot;Corner&quot;)
+writeData(wb, sheet=&quot;Corner&quot;, Corner, colNames=T)
+
+saveWorkbook(wb, SaveName, overwrite = T)</code></pre>
+</div>

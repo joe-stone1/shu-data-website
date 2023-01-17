@@ -1,0 +1,63 @@
+---
+title: "Loading and Exporting Data"
+author: "Joe Stone"
+date: "2022-11-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this example we will load data from Statsbomb, filter the data set to provide information only on corner kicks, then export the data to excel. 
+
+You can find the full code for this example here: 
+
+### Load Packages
+The first stage in the code is to load the packages required:
+```{r load-statsbomb-data, eval=FALSE}
+#load the packages needed
+library(tidyverse)
+library(StatsBombR)
+library(dplyr)
+library(ggplot2)
+library(openxlsx)
+library(readxl)
+```
+
+### Import Data
+The next stage is to load the free data from statsbomb. You can define which competition and season using the ID. For this example we are using the Womens Euros 2021 data. 
+```{r, eval=FALSE}
+Comp <- FreeCompetitions()
+Women_Euro <- FreeCompetitions() %>% 
+  filter(competition_id==53 & season_id==106) #this loads the specific competition and season
+Matches <- FreeMatches(Women_Euro)
+StatsBombEvents <- StatsBombFreeEvents(MatchesDF = Matches, Parallel = T)
+```
+
+This has now loaded the full data set for the Womens Euro's competition. From here you can explore the range of data which is available. In this example, and to reduce the amount of data we are examining, next we will focus on corner kicks. 
+
+### Pattern of Play: Corner Kicks
+Here, we can use some code to create a dataframe with a subset of data using play_pattern.name. Here we are using corners, but this could be use for any play pattern statsbomb define. 
+
+```{r, eval=FALSE}
+#Create a dataframe(df) with only corner data
+Corner <- StatsBombR::allclean(StatsBombEvents)
+Corner <-subset(Corner, play_pattern.name=="From Corner")
+```
+
+### Exporting Data to Excel
+From this point we can organised and analysis the data using R. However, in this example, we will export the data set out of the R-Studio environment into Excel, which might be a more familiar software package. 
+
+```{r, eval=FALSE}
+SaveName <- "Corner_Kick_Womens_Euro.xlsx"
+
+wb <- createWorkbook()
+
+addWorksheet(wb, "Corner")
+writeData(wb, sheet="Corner", Corner, colNames=T)
+
+saveWorkbook(wb, SaveName, overwrite = T)
+```
+
+
